@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.css — lighter, smoother purple background */
+:root{
+  scrollbar-gutter: stable;
+
+  /* უფრო ღია ტონები */
+  --bg-0: #f7f7ff;
+  --bg-1: #f3f4ff;
+  --bg-2: #eff2ff;
+  --bg-3: #f7f8ff;
+
+  /* აქცენტები ასევე ოდნავ განათებულია */
+  --accent-iris:   rgba(99, 102, 241, .08);
+  --accent-violet: rgba(139,  92, 246, .07);
+  --accent-peri:   rgba(167, 139, 250, .06);
+}
+
+html, body, app-root { height: 100%; }
+
+body{
+  margin: 0;
+  background:
+    radial-gradient(1400px 700px at -12% -14%,  var(--accent-iris),   transparent 66%),
+    radial-gradient(1200px 620px at 112% -6%,  var(--accent-violet), transparent 60%),
+    radial-gradient(1100px 640px at 52% 112%, var(--accent-peri),    transparent 64%),
+    linear-gradient(180deg,
+      var(--bg-0) 0%,
+      var(--bg-1) 24%,
+      var(--bg-2) 56%,
+      var(--bg-3) 100%
+    );
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}

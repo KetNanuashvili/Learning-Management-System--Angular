@@ -1,10 +1,4 @@
-<header class="main-header">
-  <div class="logo">LMS</div>
-  <nav class="nav-links">
-    <a href="/login" class="btn-link">Sign in</a>
-    <a href="/register" class="btn-emerald">Sign up</a>
-  </nav>
-</header>
+<app-header></app-header>
 
 <div class="auth-page">
   <section class="auth-wrap">
@@ -16,9 +10,30 @@
 
       <!-- Role tabs -->
       <div class="role-tabs" role="tablist" aria-label="Select role">
-        <button class="tab is-active" data-role="admin" role="tab" aria-selected="true">Admin</button>
-        <button class="tab" data-role="instructor" role="tab" aria-selected="false">Instructor</button>
-        <button class="tab" data-role="student" role="tab" aria-selected="false">Student</button>
+        <button
+          class="tab"
+          [class.is-active]="activeRole === 'admin'"
+          data-role="admin"
+          (click)="setRole('admin')"
+        >
+          Admin
+        </button>
+        <button
+          class="tab"
+          [class.is-active]="activeRole === 'instructor'"
+          data-role="instructor"
+          (click)="setRole('instructor')"
+        >
+          Instructor
+        </button>
+        <button
+          class="tab"
+          [class.is-active]="activeRole === 'student'"
+          data-role="student"
+          (click)="setRole('student')"
+        >
+          Student
+        </button>
       </div>
 
       <!-- Form -->

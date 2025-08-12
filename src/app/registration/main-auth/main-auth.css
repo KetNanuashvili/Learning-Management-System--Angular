@@ -1,244 +1,154 @@
-/* Header */
-.main-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-}
-
-.logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #6366F1;
-  letter-spacing: 0.5px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.btn-link {
-  color: #6366F1;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 6px 10px;
-  transition: color 0.2s ease;
-}
-
-.btn-link:hover {
-  color: #4F46E5;
-}
-
-.btn-emerald {
-  background: #10B981;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: background 0.2s ease, transform 0.1s ease;
-}
-
-.btn-emerald:hover {
-  background: #059669;
-}
-
-.btn-emerald:active {
-  transform: translateY(1px);
-}
-
-/* Auth Page */
+/* ================= Auth Page ================= */
 .auth-page {
   width: 100%;
   min-height: 100vh;
-  background-color: #f4f5f7;
+  background: transparent; /* გლობალური ფონი ჩანს */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 24px;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-  padding-top: 80px;
+  padding-top: 80px; /* header offset */
 }
 
-.auth-wrap {
-  width: 100%;
-  max-width: 720px;
-}
+.auth-wrap { width: 100%; max-width: 720px; }
 
+/* Card — purple-tinted, FIXED (no motion) */
 .auth-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.90));
+  border: 1px solid rgba(165,180,252,.45);
+  border-radius: 18px;
   padding: 48px 44px 52px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 12px 28px rgba(99,102,241,.14),
+    0 3px 8px rgba(15,23,42,.08);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  backdrop-filter: saturate(140%) blur(8px);
+  /* fixed look — no transform/animation */
+  transition: border-color .18s ease, box-shadow .18s ease;
 }
 
+/* Titles */
 .title {
-  text-align: center;
   margin: 0;
-  font-size: 2rem;
-  color: #111827;
+  text-align: center;
+  font-size: 2.05rem;
+  line-height: 1.15;
+  color: #0f172a;
+  letter-spacing: .15px;
 }
-
 .subtitle {
   text-align: center;
-  color: #4B5563;
-  margin: 10px 0 24px;
-  font-size: 1.05rem;
+  color: #475569;
+  margin: 10px 0 26px;
+  font-size: 1.04rem;
 }
 
-/* Tabs */
+/* ================= Role Tabs ================= */
 .role-tabs {
   display: flex;
   gap: 8px;
   margin-bottom: 18px;
 }
-
 .role-tabs .tab {
   flex: 1;
   padding: 10px 12px;
-  border: 1px solid #d1d5db;
-  background: #f9fafb;
+  border: 1px solid rgba(165,180,252,.45);
+  background: rgba(99,102,241,.06);
   cursor: pointer;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: .95rem;
-  transition: all .2s ease;
-  color: #374151;
+  transition: background .18s ease, border-color .18s ease, color .18s ease;
+  color: #334155;
 }
-
 .role-tabs .tab:hover {
-  background: #eef2ff;
+  background: rgba(99,102,241,.12);
+  border-color: rgba(165,180,252,.55);
 }
-
+/* Active role colors */
 .role-tabs .tab.is-active[data-role="admin"] {
-  background: #6366F1;
-  border-color: #6366F1;
-  color: #fff;
+  background: #EF4444; border-color: #EF4444; color: #fff;
 }
-
 .role-tabs .tab.is-active[data-role="instructor"] {
-  background: #10B981;
-  border-color: #10B981;
-  color: #fff;
+  background: #F59E0B; border-color: #F59E0B; color: #fff;
 }
-
 .role-tabs .tab.is-active[data-role="student"] {
-  background: #F59E0B;
-  border-color: #F59E0B;
-  color: #fff;
+  background: #10B981; border-color: #10B981; color: #fff;
 }
 
-/* Form */
+/* ================= Form ================= */
 .auth-form .field {
   display: flex;
   flex-direction: column;
+  gap: 8px;
   margin-bottom: 14px;
 }
-
 .auth-form .label {
-  margin-bottom: 6px;
   font-weight: 600;
   font-size: .95rem;
-  color: #374151;
+  color: #334155;
 }
 
+/* Inputs — LOWER height (fixed) */
 .auth-form input {
-  padding: 14px 15px;
-  border: 1px solid #d1d5db;
+  height: 42px;                 /* ↓ 48px → 42px */
+  padding: 10px 12px;           /* შესაბამისი padding */
+  border: 1px solid #e5e7eb;
   border-radius: 10px;
-  font-size: .98rem;
+  font-size: .97rem;
   outline: none;
-  transition: border-color .2s ease, box-shadow .2s ease;
   background-color: #fff;
+  transition: border-color .16s ease, box-shadow .16s ease, background-color .16s ease;
 }
-
+.auth-form input:hover { border-color: #d4d7de; }
 .auth-form input:focus {
   border-color: #6366F1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 3px rgba(99,102,241,.16); /* ოდნავ უფრო თხელი */
 }
 
-.aux {
-  text-align: right;
-  margin: 8px 0 14px;
-}
+.aux { text-align: right; margin: 8px 0 14px; }
+.link { color: #6366F1; text-decoration: none; font-weight: 600; }
+.link:hover { text-decoration: underline; }
 
-.link {
-  color: #6366F1;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-
+/* ================= Primary Button ================= */
 .btn-primary {
   width: 100%;
-  padding: 14px;
-  background: #6366F1;
+  height: 50px; /* შეგიძლია 48px-ზეც ჩამოიყვანო, თუ გინდა უფრო დაბალი */
+  padding: 0 16px;
+  background: linear-gradient(180deg, #7c83ff 0%, #6366F1 100%);
   color: #fff;
   border: none;
-  border-radius: 10px;
-  font-size: 1.1rem;
+  border-radius: 12px;
+  font-size: 1.05rem;
   font-weight: 700;
+  letter-spacing: .2px;
   cursor: pointer;
-  transition: background .2s ease, transform .05s ease;
+  transition: box-shadow .18s ease, filter .18s ease;
+  box-shadow:
+    0 10px 22px rgba(99,102,241,.20),
+    0 2px 6px rgba(99,102,241,.14);
 }
-
 .btn-primary:hover {
-  background: #4F46E5;
+  filter: brightness(1.02);
+  box-shadow:
+    0 14px 28px rgba(99,102,241,.24),
+    0 4px 10px rgba(99,102,241,.18);
 }
+/* მოძრაობა არ გვინდა → ვშლით translateY აქტივზე */
+/* .btn-primary:active { transform: translateY(1px); } */
 
-.btn-primary:active {
-  transform: translateY(1px);
-}
-
-/* Responsive */
+/* ================= Responsive ================= */
 @media (max-width: 480px) {
-  .main-header {
-    padding: 12px 18px;
-  }
-
-  .logo {
-    font-size: 1.2rem;
-  }
-
-  .btn-primary,
-  .btn-link,
-  .btn-emerald {
-    font-size: 0.9rem;
-    padding: 6px 12px;
-  }
-
-  .auth-card {
-    padding: 32px 24px;
-  }
+  .auth-card { padding: 28px 22px 32px; border-radius: 16px; }
+  .title { font-size: 1.55rem; }
+  .subtitle { font-size: .98rem; margin-bottom: 20px; }
+  .auth-form input { height: 40px; border-radius: 9px; } /* კიდევ ოდნავ დაბალი მობილურზე */
+  .btn-primary { height: 48px; border-radius: 10px; font-size: 1rem; }
 }
-
 @media (min-width: 768px) {
-  .auth-card {
-    padding: 56px 60px;
-  }
-
-  .title {
-    font-size: 2.25rem;
-  }
-
-  .subtitle {
-    font-size: 1.15rem;
-  }
+  .auth-card { padding: 56px 60px; }
+  .title { font-size: 2.2rem; }
+  .subtitle { font-size: 1.1rem; }
 }
